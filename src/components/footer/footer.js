@@ -3,8 +3,7 @@ import './footer.scss'
 export default function footer() {
     return (
         <div id='footer'>
-            © 2020 Javascript 401<br/>
-          React + Redux + Material UI
+            © 2022 Javascript<br/>
         </div>
     )
 }
