@@ -8,10 +8,18 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Col, Row } from "react-bootstrap";
 import './details.scss'
+
+import {decreaseStock} from '../../store/actions'
+import {increment} from '../../store/actions'
+import {getDetails} from '../../store/actions'
+import { Link } from "react-router-dom";
+
+
+
  function details(props) {
     return (
-        <div id ="activeCategory">
-            {console.log(props.myStore.activeCategory)}
+        <div id="activeCategory">
+            {console.log(props.myStore.products)}
             {props.myStore.activeCategory && (
                 <div>
 
@@ -31,7 +39,7 @@ import './details.scss'
   .map(item=>{
  return (
     <Col>
-<Card sx={{ maxWidth: 345 }}>
+<Card sx={{ maxWidth: 345 }} id="card">
       <CardMedia
         component="img"
         height="140"
@@ -47,8 +55,10 @@ import './details.scss'
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">ADD TO CART</Button>
-        <Button size="small">VIEW DETAILS</Button>
+        <Button size="small" onClick={()=>{props.decreaseStock(item); props.increment({name : item.name , price:item.price})}}>ADD TO CART</Button>
+       <Link to="product">
+        <Button size="small" onClick={()=>{props.getDetails(item)}}>VIEW DETAILS</Button>
+           </Link>
       </CardActions>
     </Card>
     </Col>
@@ -65,7 +75,11 @@ import './details.scss'
 
 
 const mapStateToProps = (state)=>({
-    myStore : state.reducer
+    myStore : state.catReducer
+
 })
 
-export default connect(mapStateToProps)(details)
+const mapDispatchToProps = {decreaseStock,increment,getDetails}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(details)

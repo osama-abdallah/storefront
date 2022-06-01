@@ -5,9 +5,11 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import './header.scss'
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 
-export default function ButtonAppBar() {
+ function ButtonAppBar(props) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -20,12 +22,25 @@ export default function ButtonAppBar() {
             sx={{ mr: 2 }}
           >
           </IconButton>
+
+          <Link to ="/" style={{textDecoration: "none", color:"white"}}>
           <Button color="inherit" id='store'>
             OUR STORE 
           </Button>
-          <Button color="inherit" id='cart'>CART (0)</Button>
+          </Link>
+
+            <Link to = "/cart">
+          <Button color="inherit" id='cart'>{`CART (${props.cart.length})`}</Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </Box>
   );
 }
+
+
+const mapStateToProps = (state)=>({
+  cart : state.cartReducer
+ })
+ 
+ export default connect(mapStateToProps)(ButtonAppBar)
