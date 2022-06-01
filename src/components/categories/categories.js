@@ -41,7 +41,7 @@ import {actualData} from '../../store/actions'
 }
 
 const mapStateToProps = (state)=>({
-myStore : state.reducer
+myStore : state.catReducer
 })
 
 

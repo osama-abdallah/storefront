@@ -16,7 +16,7 @@ export const initialState = {
         category: "Electronics",
         price: 500,
         inventoryCount: 40,
-        img: "https://www.macworld.co.uk/cmsdata/features/3685961/macbook_air_2019_review_9_thumb900_1-1.jpg",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcM9iSA2KQEBT3SZiQHs7teNOFdylchk1S-A&usqp=CAU",
       },
       {
         name: "PS5",
